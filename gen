@@ -1,0 +1,25 @@
+#!/bin/sh
+
+cat > f/$1.php << EOF
+<?php
+
+return function(){
+};
+EOF
+
+classname=$(echo $1 | sed 's/./\U&/')Test
+
+cat > tests/$classname.php << EOF
+<?php
+
+use \\f\\F as F;
+
+class $classname extends PHPUnit_Framework_TestCase
+{
+	function test()
+	{
+		\$f = F::get();
+		\$this->assertEquals();
+	}
+}
+EOF

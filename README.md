@@ -1,4 +1,4 @@
-# f
+# f [![Build Status](https://travis-ci.org/zweifisch/f.png?branch=master)](https://travis-ci.org/zweifisch/f)
 
 functional building blocks for php
 

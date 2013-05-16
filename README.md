@@ -19,6 +19,7 @@ $f->map($f->comp($f->even,$f->inc), [1,2]);
 * div
 * even
 * every
+* filter
 * first
 * get
 * inc

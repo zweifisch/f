@@ -26,12 +26,13 @@ $f->map($f->comp($f->even,$f->inc), [1,2]);
 * keys
 * last
 * map
-* minus
 * mul
 * odd
 * partial
+* reduce
 * rem
 * some
+* sub
 * vals
 
 ## tests

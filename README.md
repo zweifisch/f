@@ -5,7 +5,7 @@ functional building blocks for php
 ## synopsis
 
 ```php
-$f = \f\F::get();
+$f = \f\F::getInstance();
 
 $f->map($f->comp($f->even,$f->inc), [1,2]);
 ```
@@ -13,8 +13,10 @@ $f->map($f->comp($f->even,$f->inc), [1,2]);
 ## available functions
 
 * add
-* complement
+* apply
 * comp
+* complement
+* concat
 * dec
 * div
 * even
@@ -40,4 +42,10 @@ $f->map($f->comp($f->even,$f->inc), [1,2]);
 ```sh
 composer install --dev
 vendor/bin/phpunit -c tests
+```
+
+## benchmarks
+
+```sh
+php benchmark/run.php
 ```

@@ -4,7 +4,6 @@ namespace f;
 
 class F
 {
-	private $closures = [];
 	private static $instance;
 
 	static function get()
@@ -16,30 +15,37 @@ class F
 		return self::$instance;
 	}
 
+	function apply($fn, $args)
+	{
+		$count = count($args);
+		return
+			(1 == $count ? $fn($args[0]) :
+			(2 == $count ? $fn($args[0], $args[1]) :
+			(3 == $count ? $fn($args[0], $args[1], $args[2]) : call_user_func_array($fn, $args))));
+	}
+
 	function __call($name, $args)
 	{
-		$closure = $this->__get($name);
-		return call_user_func_array($closure, $args);
+		$closure = isset($this->$name) ? $this->$name : $this->__get($name);
+		$count = count($args);
+		return
+			(1 == $count ? $closure($args[0]) :
+			(2 == $count ? $closure($args[0], $args[1]) :
+			(3 == $count ? $closure($args[0], $args[1], $args[2]) : call_user_func_array($closure, $args))));
 	}
 
 	function __get($name)
 	{
-		if (!isset($this->closures[$name]))
+		$path = __DIR__ . DIRECTORY_SEPARATOR . $name . '.php';
+		if (is_readable($path))
 		{
-			$path = __DIR__ . DIRECTORY_SEPARATOR . $name . '.php';
-			if (is_readable($path))
-			{
-				$closure = require $path;
-				if (1 === $closure){
-					throw new \Exception("closure not returned: $path");
-				}
-				$this->closures[$name] = $closure;
+			$closure = require $path;
+			if (1 === $closure){
+				throw new \Exception("closure not returned: $path");
 			}
-			else
-			{
-				throw new \Exception("closure not found: $name");
-			}
+			$this->$name = $closure;
+			return $closure;
 		}
-		return $this->closures[$name];
+		throw new \Exception("closure not found: $name");
 	}
 }

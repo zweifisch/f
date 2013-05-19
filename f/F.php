@@ -101,6 +101,7 @@ class F
 	}
 	
 	public function map($fn,$coll){
+		return call_user_func_array('array_map',func_get_args());
 		$colls = func_get_args();
 		array_shift($colls);
 		$ret = [];

@@ -12,10 +12,6 @@ class Foo{
 	}
 }
 
-// Foo::$inc = function($val){
-// 	return $val + 1;
-// }
-// 
 class Bar{
 	function inc($val){
 		return $val + 1;
@@ -54,6 +50,5 @@ run('closure', $setup($inc), $test);
 run('object method', $setup(array($bar,'inc')), $test);
 run('static', $setup('Foo::inc'), $test);
 run('static', $setup(array('Foo','inc')), $test);
-// run('static', $setup(Foo::inc, $test);
 
 # static > object method > closure > object attr > function

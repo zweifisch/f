@@ -31,6 +31,6 @@ $tests = $argc > 1
 foreach($tests as $test){
 	echo str_pad(basename($test), 80, '.', STR_PAD_BOTH), "\n";
 	require $test;
-	usleep(500);
+	sleep(1);
 }
 

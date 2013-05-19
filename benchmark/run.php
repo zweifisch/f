@@ -22,7 +22,15 @@ function run($msg,$block)
 	echo str_pad(number_format(microtime(true) + $start, 5), 20, '.', STR_PAD_LEFT), "\n";
 }
 
-if($argc > 1)
-{
-	require $argv[1];
+$tests = $argc > 1
+	? array_shift($argv)
+	: array_filter(glob('benchmark/*.php'), function($path){
+		return basename($path) !== basename(__FILE__);
+	});
+
+foreach($tests as $test){
+	echo str_pad(basename($test), 80, '.', STR_PAD_BOTH), "\n";
+	require $test;
+	usleep(500);
 }
+

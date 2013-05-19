@@ -6,7 +6,7 @@ class ReduceTest extends PHPUnit_Framework_TestCase
 {
 	function test()
 	{
-		$f = F::get();
+		$f = new F;
 		$this->assertEquals(0, $f->reduce($f->add, []));
 		$this->assertEquals(1, $f->reduce($f->add, [1]));
 		$this->assertEquals(2, $f->reduce($f->add, 1, [1]));

@@ -12,13 +12,6 @@ run('apply 1', $setup, function($f){
 	}
 });
 
-run('apply cached 1', $setup, function($f){
-	$apply = $f->apply;
-	for($i=0; $i<N; $i++){
-		$apply($f->add, [1]);
-	}
-});
-
 run('call_user_func_array 1', $setup, function($f){
 	for($i=0; $i<N; $i++){
 		call_user_func_array($f->add, [1]);

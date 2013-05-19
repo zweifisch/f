@@ -6,7 +6,7 @@ class AddTest extends PHPUnit_Framework_TestCase
 {
 	function test()
 	{
-		$f = F::get();
+		$f = new F;
 		$this->assertSame(0,$f->add());
 		$this->assertSame(1,$f->add(1));
 		$this->assertSame(3,$f->add(1,2));

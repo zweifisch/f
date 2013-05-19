@@ -6,7 +6,7 @@ class ValsTest extends PHPUnit_Framework_TestCase
 {
 	function test()
 	{
-		$f = F::get();
+		$f = new F;
 		$this->assertEquals(['value'], $f->vals(['key'=>'value']));
 	}
 }

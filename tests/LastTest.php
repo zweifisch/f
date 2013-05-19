@@ -6,7 +6,7 @@ class LastTest extends PHPUnit_Framework_TestCase
 {
 	function test()
 	{
-		$f = F::get();
+		$f = F::getInstance();
 		$this->assertSame(false, $f->last([]));
 		$this->assertEquals(2, $f->last([1,2]));
 	}

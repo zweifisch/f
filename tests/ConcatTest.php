@@ -6,7 +6,7 @@ class ConcatTest extends PHPUnit_Framework_TestCase
 {
 	function test()
 	{
-		$f = F::get();
+		$f = new F;
 		$this->assertSame([], $f->concat());
 		$this->assertSame([], $f->concat([]));
 		$this->assertSame([], $f->concat([],[]));

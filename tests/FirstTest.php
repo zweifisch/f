@@ -6,7 +6,7 @@ class FirstTest extends PHPUnit_Framework_TestCase
 {
 	function test()
 	{
-		$f = F::get();
+		$f = F::getInstance();
 		$this->assertSame(false, $f->first([]));
 		$this->assertSame(1, $f->first([1,2]));
 	}

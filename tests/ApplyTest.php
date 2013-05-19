@@ -6,7 +6,7 @@ class ApplyTest extends PHPUnit_Framework_TestCase
 {
 	function test()
 	{
-		$f = F::get();
+		$f = new F;
 		$this->assertSame(6, $f->apply($f->add,[1,2,3]));
 		$this->assertSame(0, $f->apply($f->add,[]));
 	}

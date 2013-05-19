@@ -6,7 +6,7 @@ class CompTest extends PHPUnit_Framework_TestCase
 {
 	function test()
 	{
-		$f = F::get();
+		$f = new F;
 		$comp = $f->comp($f->even , $f->inc);
 		$this->assertTrue($comp(1));
 
